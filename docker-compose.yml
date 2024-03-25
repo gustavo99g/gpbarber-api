@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres
+    container_name: gobarber-postgres
+    restart: always
+    ports:
+      - 5532:5432
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=gobarber
+    volumes:
+      - pgdata:/data/postgres
+    network_mode: host
+ 
+
+volumes:
+  pgdata:
+    driver: local

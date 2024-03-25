@@ -1,0 +1,30 @@
+meta {
+  name: avatar
+  type: http
+  seq: 5
+}
+
+put {
+  url: http://localhost:3333/api/v1/users/avatar
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiJ9.OTk4YjMyMDAtMjYzZi00ZWFkLWFhZTktYTJiNzY5OWVmYjA4.LiIIzOukaq_EXWkyRTf1Q354AMkXzEHuGYxYmAXL7Q0
+}
+
+body:json {
+  {
+    "name": "new name",
+    "email": "newMail@mail.com",
+    "currentPassword":"dawdadda",
+    "newPassword":"dawdawdada",
+    "confirmPassword":"dawdawdada"
+    
+  }
+}
+
+body:multipart-form {
+  avatar: @file(/home/bob/Pictures/32-w1260.jpg)
+}

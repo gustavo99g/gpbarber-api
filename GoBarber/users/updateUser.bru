@@ -1,0 +1,26 @@
+meta {
+  name: updateUser
+  type: http
+  seq: 4
+}
+
+patch {
+  url: http://localhost:3333/api/v1/users
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiJ9.OTk4YjMyMDAtMjYzZi00ZWFkLWFhZTktYTJiNzY5OWVmYjA4.LiIIzOukaq_EXWkyRTf1Q354AMkXzEHuGYxYmAXL7Q0
+}
+
+body:json {
+  {
+    "name": "new name",
+    "email": "newMail@mail.com",
+    "currentPassword":"dawdadda",
+    "newPassword":"dawdawdada",
+    "confirmPassword":"dawdawdada"
+    
+  }
+}

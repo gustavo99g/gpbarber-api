@@ -1,0 +1,22 @@
+meta {
+  name: createAppointment
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:3333/api/v1/appointments
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiJ9.OTk4YjMyMDAtMjYzZi00ZWFkLWFhZTktYTJiNzY5OWVmYjA4.LiIIzOukaq_EXWkyRTf1Q354AMkXzEHuGYxYmAXL7Q0
+}
+
+body:json {
+  {
+    "provider_id":"79818e86-71a1-423e-a53d-7367f66e0244",
+    "date":"2024-03-25T10:00"
+  }
+}
