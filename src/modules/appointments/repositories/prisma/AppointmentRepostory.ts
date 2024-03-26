@@ -1,5 +1,5 @@
 import { prisma } from "../../../../infra/prisma/client";
-import {addDays,subDays} from 'date-fns'
+import {addDays,endOfDay,endOfMonth,startOfDay,startOfMonth,subDays} from 'date-fns'
 import { ICreateAppointment } from "../../useCases/createAppointment/CreateAppointmentUseCase";
 import { IAppointmentRepository } from "../IAppointmentRepository";
 
@@ -16,12 +16,13 @@ class AppointmentRepository implements IAppointmentRepository {
     });
   }
 
-  async getDayAppointments(date: Date) {
+  async getDayAppointments(date: Date,provider_id:string) {
     const appointments = await prisma.appointment.findMany({
       where: {
+        provider_id,
         date:{
-          gt: subDays(date,1),
-          lt: addDays(date,1),
+          gt: startOfDay(date),
+          lt: endOfDay(date),
         },
       },
     });
@@ -32,8 +33,8 @@ class AppointmentRepository implements IAppointmentRepository {
     const appointments = await prisma.appointment.findMany({
       where: {
         date:{
-          gt: subDays(date,1),
-          lt: addDays(date,1),
+          gt: startOfMonth(date),
+          lt: endOfMonth(date),
         },
       },
     });

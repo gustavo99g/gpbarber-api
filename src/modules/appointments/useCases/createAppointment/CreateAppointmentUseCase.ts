@@ -25,7 +25,7 @@ class CreateAppointmentUseCase {
       throw new AppError("Horário não comercial",400)
     }
 
-   if(appointmentMin !== 0 && appointmentMin !== 30){
+   if(appointmentMin !== 0){
       throw new AppError("Horário informado não respeita o intervalo",400)
     }
 
