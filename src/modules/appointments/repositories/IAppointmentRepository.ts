@@ -14,7 +14,7 @@ interface Appointment{
 
 export interface IAppointmentRepository{
   create(data: ICreateAppointment): Promise<void>
-  getMonthAppointments(endDate: Date): Promise<Appointment[]>
+  getMonthAppointments(endDate: Date,provider_id:string): Promise<Appointment[]>
   getDayAppointments(date: Date,provider_id:string): Promise<Appointment[]>
   findByDate(date: Date,provider_id:string): Promise<Appointment | null>
 }

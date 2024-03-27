@@ -1,4 +1,4 @@
-import { getHours, startOfDay } from "date-fns";
+import { getDaysInMonth, getHours, startOfDay } from "date-fns";
 import { IAppointmentRepository } from "../../repositories/IAppointmentRepository";
 import { IUsersRepository } from "../../../users/repositories/IUsersRepository";
 import { AppError } from "../../../../infra/http/error/AppError";

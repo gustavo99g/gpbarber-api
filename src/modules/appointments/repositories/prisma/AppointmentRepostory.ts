@@ -29,9 +29,10 @@ class AppointmentRepository implements IAppointmentRepository {
     return appointments;
   }
 
-  async getMonthAppointments(date: Date) {
+  async getMonthAppointments(date: Date,provider_id:string) {
     const appointments = await prisma.appointment.findMany({
       where: {
+        provider_id,
         date:{
           gt: startOfMonth(date),
           lt: endOfMonth(date),
