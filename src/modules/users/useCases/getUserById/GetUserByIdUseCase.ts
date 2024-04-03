@@ -1,3 +1,4 @@
+import { storageUrl } from "../../../../config/storage";
 import { AppError } from "../../../../infra/http/error/AppError";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 
@@ -13,7 +14,8 @@ class GetUserByIdUseCase {
       id: user.id,
       name: user.name,
       email: user.email,
-      avatar:user.avatar
+      avatar:storageUrl+ user.avatar,
+      isProvider: user.isProvider
     }
 
 

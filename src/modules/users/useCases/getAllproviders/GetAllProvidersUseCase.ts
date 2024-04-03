@@ -1,3 +1,4 @@
+import { avatarFolder, storageUrl } from "../../../../config/storage";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 
 class GetAllProvidersUseCase {
@@ -12,7 +13,7 @@ class GetAllProvidersUseCase {
       return {
         id: user.id,
         name: user.name,
-        avatar: user.avatar,
+        avatar: storageUrl + user.avatar,
 
       }
     })

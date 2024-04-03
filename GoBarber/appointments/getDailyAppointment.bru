@@ -1,0 +1,20 @@
+meta {
+  name: getDailyAppointment
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://localhost:3333/api/v1/appointments/get-daily-appointments?date=2024-04-03T00:00&provider_id=79818e86-71a1-423e-a53d-7367f66e0244
+  body: none
+  auth: bearer
+}
+
+query {
+  date: 2024-04-03T00:00
+  provider_id: 79818e86-71a1-423e-a53d-7367f66e0244
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiJ9.OTk4YjMyMDAtMjYzZi00ZWFkLWFhZTktYTJiNzY5OWVmYjA4.LiIIzOukaq_EXWkyRTf1Q354AMkXzEHuGYxYmAXL7Q0
+}

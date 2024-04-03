@@ -42,6 +42,25 @@ class AppointmentRepository implements IAppointmentRepository {
     return appointments;
   }
 
+  getAllDayAppointments(date:Date,provider_id:string) {
+    return prisma.appointment.findMany({
+      where: {
+        date:{
+          gte: date,
+          lte: endOfDay(date),
+        },
+        provider_id
+      },
+      include: {
+        client: true
+      },
+      orderBy: {
+        date: 'asc'
+      }
+      
+    });
+  }
+
   async findByDate(date: Date,provider_id:string) {
     const appointment = await prisma.appointment.findFirst({
       where: {

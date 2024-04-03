@@ -44,6 +44,7 @@ class CreateAppointmentUseCase {
     }
 
     const appointmentAlreadyExists = await this.appointmentRepository.findByDate(date,provider_id)
+    console.log(appointmentAlreadyExists)
     if(appointmentAlreadyExists){
       throw new AppError("Horário ja agendado",400)
     }

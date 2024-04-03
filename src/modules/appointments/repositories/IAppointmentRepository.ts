@@ -1,3 +1,4 @@
+import { User } from "../../users/repositories/IUsersRepository"
 import { ICreateAppointment } from "../useCases/createAppointment/CreateAppointmentUseCase"
 
 
@@ -10,6 +11,7 @@ interface Appointment{
   date: Date
   created_at: Date
   updated_at: Date
+  client?:User
 }
 
 export interface IAppointmentRepository{
@@ -17,4 +19,6 @@ export interface IAppointmentRepository{
   getMonthAppointments(endDate: Date,provider_id:string): Promise<Appointment[]>
   getDayAppointments(date: Date,provider_id:string): Promise<Appointment[]>
   findByDate(date: Date,provider_id:string): Promise<Appointment | null>
+  getAllDayAppointments(date: Date,provider_id:string): Promise<Appointment[]>
+
 }
