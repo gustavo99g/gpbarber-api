@@ -61,7 +61,7 @@ class GetDailyAppointmentsUseCase {
 
     return {
       morning: formattedAppointments.filter(appointment => getHours(appointment.date) < 12),
-        afternoon: formattedAppointments.filter(appointment => getHours(appointment.date) >= 12)
+      afternoon: formattedAppointments.filter(appointment => getHours(appointment.date) >= 12)
     }
   }
 

@@ -39,7 +39,7 @@ class GetMonthAvailabilityUseCase {
     const appointments = await this.appointmentRepository.getMonthAppointments(month,provider_id)
     const monthAvailability = daysInMonth.map(day => {
       return {
-        day: day,
+        day: new Date(month.getFullYear(), month.getMonth(), day),
         available: appointments.filter(appointment => appointment.date.getUTCDate() === day).length >=10 ? false : true
       }
     })

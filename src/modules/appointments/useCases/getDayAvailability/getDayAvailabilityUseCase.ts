@@ -39,14 +39,37 @@ class GetDayAvailabilityUseCase {
     const appointments = await this.appointmentRepository.getDayAppointments(day,provider_id)
 
 
-    const availableAppointments = commercialHours.map(hour => {
-      return {
-        hour,
-        available: !appointments.find(appointment => getHours(appointment.date) === hour)
-      }
-    })
+    // const availableAppointments = commercialHours.map(hour => {
+    //   if(!appointments.find(appointment => getHours(appointment.date) === hour)){
+    //     return {
+    //       hour:hour+':00',
+    //       available:true
+    //     }
+    //   }
+      
+    // })
 
-    return availableAppointments
+    const availableAppointments= commercialHours.reduce((acc, hour) => {
+
+      if(!appointments.find(appointment => getHours(appointment.date) === hour)){
+        if(hour < 13){
+          acc.morning.push({
+            hour:hour+':00',
+            available:true
+          })
+        }else{
+          acc.afternoon.push({
+            hour:hour+':00',
+            available:true
+          })
+        }
+      }
+      
+      return acc
+      
+    },{morning:[] as {hour:string,available:boolean}[] ,afternoon:[] as {hour:string,available:boolean}[]})
+
+  return availableAppointments
 
   }
 
